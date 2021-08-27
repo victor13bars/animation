@@ -96,3 +96,16 @@ input {
         transform: translateX(-150px);
     }
 }
+
+.todo{
+    border: 1px solid black;
+    padding: 5px 10px;
+    margin: 15px;
+}
+
+.todo-enter-active{
+    animation: fade-in 500ms forwards;
+}
+.todo-exit-active{
+    animation: fade-out 500ms forwards;
+}

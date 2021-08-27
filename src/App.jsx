@@ -1,14 +1,23 @@
 import './App.css';
 import {useEffect, useState} from "react";
-import {Transition, CSSTransition, SwitchTransition} from 'react-transition-group';
+import {Transition, CSSTransition, SwitchTransition, TransitionGroup} from 'react-transition-group';
 
 function App() {
     const [loaderVisible, setLoaderVisible] = useState(false)
     const [mode, setMode] = useState('out-in')
     const [toggle, setToggle] = useState(false)
+    const [text, setText] = useState('')
+    const [todoList, setTodoList] = useState([{id: 1, text: 'Сними видео'}, {id: 2, text: 'Сними про React'}, {
+        id: 3,
+        text: 'Сними про Redux'
+    }])
 
     function changeHandler(e) {
         setMode(e.target.value)
+    }
+
+    const addTodo = () => {
+        setTodoList([...todoList, {id: Date.now(), text}])
     }
 
     return (
@@ -51,6 +60,26 @@ function App() {
                     </button>
                 </CSSTransition>
             </SwitchTransition>
+            <div>
+                <input value={text} type="text" onChange={(e) => setText(e.target.value)}/>
+                <button onClick={addTodo}>Добавить</button>
+            </div>
+            <TransitionGroup component='ul'>
+                    {todoList.map(el =>
+                        <CSSTransition
+                            key={el.id}
+                            timeout={500}
+                            classNames='todo'
+                        >
+                            <li
+                                className='todo'
+                                onClick={() => setTodoList([...todoList.filter(todo => todo.id !== el.id)])}
+                            >
+                                {el.id}.{el.text}
+                            </li>
+                        </CSSTransition>
+                    )}
+            </TransitionGroup>
         </div>
     );
 }
