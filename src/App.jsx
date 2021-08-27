@@ -1,6 +1,7 @@
 import './App.css';
 import {useEffect, useState} from "react";
 import {Transition, CSSTransition, SwitchTransition, TransitionGroup} from 'react-transition-group';
+import AppRoutes from "./AppRoutes";
 
 function App() {
     const [loaderVisible, setLoaderVisible] = useState(false)
@@ -80,6 +81,9 @@ function App() {
                         </CSSTransition>
                     )}
             </TransitionGroup>
+            <div>
+                <AppRoutes></AppRoutes>
+            </div>
         </div>
     );
 }

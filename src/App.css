@@ -109,3 +109,37 @@ input {
 .todo-exit-active{
     animation: fade-out 500ms forwards;
 }
+
+.page{
+    position: absolute;
+}
+a{
+    margin-right: 30px;
+}
+@keyframes fad-in {
+    0% {
+        opacity: 0;
+        transform: translateX(-400px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fad-out {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+.page-enter-active{
+    animation: fad-in 1s forwards;
+}
+.page-exit-active{
+    animation: fad-out 1s forwards;
+}
